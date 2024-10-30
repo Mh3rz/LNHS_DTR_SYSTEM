@@ -11,3 +11,4 @@ C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\Debug\LNHS
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\Debug\LNHS_DTR_SYSTEM.Register.resources
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\Debug\LNHS_DTR_SYSTEM.Biometrics.resources
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\Debug\LNHS_DTR_SYSTEM.Admin.resources
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\Debug\LNHS_DTR_SYSTEM.AdminEmployeeList.resources

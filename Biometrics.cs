@@ -26,5 +26,6 @@ namespace LNHS_DTR_SYSTEM
             txtTime.Text = DateTime.Now.ToString("hh:mm tt");
 
         }
+
     }
 }

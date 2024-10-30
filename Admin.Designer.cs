@@ -29,67 +29,73 @@
         private void InitializeComponent()
         {
             this.lblEmpId = new System.Windows.Forms.Label();
-            this.btnBiometricsMain = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDLDTR = new System.Windows.Forms.Button();
+            this.btnEmployeeList = new System.Windows.Forms.Button();
+            this.btnViewDatabase = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblEmpId
             // 
             this.lblEmpId.AutoSize = true;
             this.lblEmpId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpId.Location = new System.Drawing.Point(22, 22);
+            this.lblEmpId.Location = new System.Drawing.Point(29, 27);
+            this.lblEmpId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmpId.Name = "lblEmpId";
-            this.lblEmpId.Size = new System.Drawing.Size(314, 24);
+            this.lblEmpId.Size = new System.Drawing.Size(398, 29);
             this.lblEmpId.TabIndex = 9;
             this.lblEmpId.Text = "ADMINISTRATION - CONTROLS";
             // 
-            // btnBiometricsMain
+            // btnDLDTR
             // 
-            this.btnBiometricsMain.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnBiometricsMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBiometricsMain.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBiometricsMain.Location = new System.Drawing.Point(95, 257);
-            this.btnBiometricsMain.Name = "btnBiometricsMain";
-            this.btnBiometricsMain.Size = new System.Drawing.Size(331, 167);
-            this.btnBiometricsMain.TabIndex = 10;
-            this.btnBiometricsMain.Text = "DOWNLOAD DTR";
-            this.btnBiometricsMain.UseVisualStyleBackColor = false;
+            this.btnDLDTR.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnDLDTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDLDTR.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDLDTR.Location = new System.Drawing.Point(127, 316);
+            this.btnDLDTR.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDLDTR.Name = "btnDLDTR";
+            this.btnDLDTR.Size = new System.Drawing.Size(441, 206);
+            this.btnDLDTR.TabIndex = 10;
+            this.btnDLDTR.Text = "DOWNLOAD DTR";
+            this.btnDLDTR.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnEmployeeList
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(470, 257);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(331, 167);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "EMPLOYEE LIST";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnEmployeeList.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnEmployeeList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployeeList.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEmployeeList.Location = new System.Drawing.Point(627, 316);
+            this.btnEmployeeList.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEmployeeList.Name = "btnEmployeeList";
+            this.btnEmployeeList.Size = new System.Drawing.Size(441, 206);
+            this.btnEmployeeList.TabIndex = 11;
+            this.btnEmployeeList.Text = "EMPLOYEE LIST";
+            this.btnEmployeeList.UseVisualStyleBackColor = false;
+            this.btnEmployeeList.Click += new System.EventHandler(this.btnEmployeeList_Click);
             // 
-            // button2
+            // btnViewDatabase
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(842, 257);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(331, 167);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "VIEW DATABASE";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnViewDatabase.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnViewDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewDatabase.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnViewDatabase.Location = new System.Drawing.Point(1123, 316);
+            this.btnViewDatabase.Margin = new System.Windows.Forms.Padding(4);
+            this.btnViewDatabase.Name = "btnViewDatabase";
+            this.btnViewDatabase.Size = new System.Drawing.Size(441, 206);
+            this.btnViewDatabase.TabIndex = 12;
+            this.btnViewDatabase.Text = "VIEW DATABASE";
+            this.btnViewDatabase.UseVisualStyleBackColor = false;
             // 
             // Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnBiometricsMain);
+            this.ClientSize = new System.Drawing.Size(1685, 838);
+            this.Controls.Add(this.btnViewDatabase);
+            this.Controls.Add(this.btnEmployeeList);
+            this.Controls.Add(this.btnDLDTR);
             this.Controls.Add(this.lblEmpId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Admin";
             this.Text = "Admin";
             this.ResumeLayout(false);
@@ -100,8 +106,8 @@
         #endregion
 
         private System.Windows.Forms.Label lblEmpId;
-        private System.Windows.Forms.Button btnBiometricsMain;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDLDTR;
+        private System.Windows.Forms.Button btnEmployeeList;
+        private System.Windows.Forms.Button btnViewDatabase;
     }
 }

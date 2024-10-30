@@ -10,18 +10,13 @@ using System.Windows.Forms;
 
 namespace LNHS_DTR_SYSTEM
 {
-    public partial class Admin : Form
+    public partial class AdminEmployeeList : Form
     {
-        public Admin()
+        public AdminEmployeeList()
         {
             InitializeComponent();
         }
 
-        private void btnEmployeeList_Click(object sender, EventArgs e)
-        {
-            AdminEmployeeList adminEmployeeList = new AdminEmployeeList();
-
-            adminEmployeeList.Show();
-        }
+  
     }
 }
