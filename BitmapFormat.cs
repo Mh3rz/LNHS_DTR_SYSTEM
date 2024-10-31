@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Runtime.InteropServices;
 using System.IO;
 
@@ -39,11 +39,11 @@ namespace Sample
         }
 
         /*******************************************
-        * 函数名称：RotatePic       
-        * 函数功能：旋转图片，目的是保存和显示的图片与按的指纹方向不同     
-        * 函数入参：BmpBuf---旋转前的指纹字符串
-        * 函数出参：ResBuf---旋转后的指纹字符串
-        * 函数返回：无
+        * 潞炉脢媒脙没鲁脝拢潞RotatePic       
+        * 潞炉脢媒鹿娄脛脺拢潞脨媒脳陋脥录脝卢拢卢脛驴碌脛脢脟卤拢麓忙潞脥脧脭脢戮碌脛脥录脝卢脫毛掳麓碌脛脰赂脦脝路陆脧貌虏禄脥卢     
+        * 潞炉脢媒脠毛虏脦拢潞BmpBuf---脨媒脳陋脟掳碌脛脰赂脦脝脳脰路没麓庐
+        * 潞炉脢媒鲁枚虏脦拢潞ResBuf---脨媒脳陋潞贸碌脛脰赂脦脝脳脰路没麓庐
+        * 潞炉脢媒路碌禄脴拢潞脦脼
         *********************************************/
         public static void RotatePic(byte[] BmpBuf, int width, int height, ref byte[] ResBuf)
         {
@@ -53,7 +53,7 @@ namespace Sample
 
             try
             {
-                for (RowLoop = 0; RowLoop < BmpBuflen; )
+                for (RowLoop = 0; RowLoop < BmpBuflen;)
                 {
                     for (ColLoop = 0; ColLoop < width; ColLoop++)
                     {
@@ -71,12 +71,12 @@ namespace Sample
         }
 
         /*******************************************
-        * 函数名称：StructToBytes       
-        * 函数功能：将结构体转化成无符号字符串数组     
-        * 函数入参：StructObj---被转化的结构体
-        *           Size---被转化的结构体的大小
-        * 函数出参：无
-        * 函数返回：结构体转化后的数组
+        * 潞炉脢媒脙没鲁脝拢潞StructToBytes       
+        * 潞炉脢媒鹿娄脛脺拢潞陆芦陆谩鹿鹿脤氓脳陋禄炉鲁脡脦脼路没潞脜脳脰路没麓庐脢媒脳茅     
+        * 潞炉脢媒脠毛虏脦拢潞StructObj---卤禄脳陋禄炉碌脛陆谩鹿鹿脤氓
+        *           Size---卤禄脳陋禄炉碌脛陆谩鹿鹿脤氓碌脛麓贸脨隆
+        * 潞炉脢媒鲁枚虏脦拢潞脦脼
+        * 潞炉脢媒路碌禄脴拢潞陆谩鹿鹿脤氓脳陋禄炉潞贸碌脛脢媒脳茅
         *********************************************/
         public static byte[] StructToBytes(object StructObj, int Size)
         {
@@ -122,20 +122,20 @@ namespace Sample
         }
 
         /*******************************************
-        * 函数名称：GetBitmap       
-        * 函数功能：将传进来的数据保存为图片     
-        * 函数入参：buffer---图片数据
-        *           nWidth---图片的宽度
-        *           nHeight---图片的高度
-        * 函数出参：无
-        * 函数返回：无
+        * 潞炉脢媒脙没鲁脝拢潞GetBitmap       
+        * 潞炉脢媒鹿娄脛脺拢潞陆芦麓芦陆酶脌麓碌脛脢媒戮脻卤拢麓忙脦陋脥录脝卢     
+        * 潞炉脢媒脠毛虏脦拢潞buffer---脥录脝卢脢媒戮脻
+        *           nWidth---脥录脝卢碌脛驴铆露脠
+        *           nHeight---脥录脝卢碌脛赂脽露脠
+        * 潞炉脢媒鲁枚虏脦拢潞脦脼
+        * 潞炉脢媒路碌禄脴拢潞脦脼
         *********************************************/
         public static void GetBitmap(byte[] buffer, int nWidth, int nHeight, ref MemoryStream ms)
         {
             int ColorIndex = 0;
             ushort m_nBitCount = 8;
             int m_nColorTableEntries = 256;
-            byte[] ResBuf = new byte[nWidth * nHeight*2];
+            byte[] ResBuf = new byte[nWidth * nHeight * 2];
 
             try
             {
@@ -145,7 +145,7 @@ namespace Sample
 
                 int w = (((nWidth + 3) / 4) * 4);
 
-                //图片头信息
+                //脥录脝卢脥路脨脜脧垄
                 BmpInfoHeader.biSize = Marshal.SizeOf(BmpInfoHeader);
                 BmpInfoHeader.biWidth = nWidth;
                 BmpInfoHeader.biHeight = nHeight;
@@ -158,7 +158,7 @@ namespace Sample
                 BmpInfoHeader.biClrUsed = m_nColorTableEntries;
                 BmpInfoHeader.biClrImportant = m_nColorTableEntries;
 
-                //文件头信息
+                //脦脛录镁脥路脨脜脧垄
                 BmpHeader.bfType = 0x4D42;
                 BmpHeader.bfOffBits = 14 + Marshal.SizeOf(BmpInfoHeader) + BmpInfoHeader.biClrUsed * 4;
                 BmpHeader.bfSize = BmpHeader.bfOffBits + ((((w * BmpInfoHeader.biBitCount + 31) / 32) * 4) * BmpInfoHeader.biHeight);
@@ -168,7 +168,7 @@ namespace Sample
                 ms.Write(StructToBytes(BmpHeader, 14), 0, 14);
                 ms.Write(StructToBytes(BmpInfoHeader, Marshal.SizeOf(BmpInfoHeader)), 0, Marshal.SizeOf(BmpInfoHeader));
 
-                //调试板信息
+                //碌梅脢脭掳氓脨脜脧垄
                 for (ColorIndex = 0; ColorIndex < m_nColorTableEntries; ColorIndex++)
                 {
                     ColorMask[ColorIndex].redmask = (byte)ColorIndex;
@@ -179,7 +179,7 @@ namespace Sample
                     ms.Write(StructToBytes(ColorMask[ColorIndex], Marshal.SizeOf(ColorMask[ColorIndex])), 0, Marshal.SizeOf(ColorMask[ColorIndex]));
                 }
 
-                //图片旋转，解决指纹图片倒立的问题
+                //脥录脝卢脨媒脳陋拢卢陆芒戮枚脰赂脦脝脥录脝卢碌鹿脕垄碌脛脦脢脤芒
                 RotatePic(buffer, nWidth, nHeight, ref ResBuf);
 
                 byte[] filter = null;
@@ -198,19 +198,19 @@ namespace Sample
             }
             catch (Exception ex)
             {
-               // ZKCE.SysException.ZKCELogger logger = new ZKCE.SysException.ZKCELogger(ex);
-               // logger.Append();
+                // ZKCE.SysException.ZKCELogger logger = new ZKCE.SysException.ZKCELogger(ex);
+                // logger.Append();
             }
         }
 
         /*******************************************
-        * 函数名称：WriteBitmap       
-        * 函数功能：将传进来的数据保存为图片     
-        * 函数入参：buffer---图片数据
-        *           nWidth---图片的宽度
-        *           nHeight---图片的高度
-        * 函数出参：无
-        * 函数返回：无
+        * 潞炉脢媒脙没鲁脝拢潞WriteBitmap       
+        * 潞炉脢媒鹿娄脛脺拢潞陆芦麓芦陆酶脌麓碌脛脢媒戮脻卤拢麓忙脦陋脥录脝卢     
+        * 潞炉脢媒脠毛虏脦拢潞buffer---脥录脝卢脢媒戮脻
+        *           nWidth---脥录脝卢碌脛驴铆露脠
+        *           nHeight---脥录脝卢碌脛赂脽露脠
+        * 潞炉脢媒鲁枚虏脦拢潞脦脼
+        * 潞炉脢媒路碌禄脴拢潞脦脼
         *********************************************/
         public static void WriteBitmap(byte[] buffer, int nWidth, int nHeight)
         {
@@ -226,7 +226,7 @@ namespace Sample
                 BITMAPINFOHEADER BmpInfoHeader = new BITMAPINFOHEADER();
                 MASK[] ColorMask = new MASK[m_nColorTableEntries];
                 int w = (((nWidth + 3) / 4) * 4);
-                //图片头信息
+                //脥录脝卢脥路脨脜脧垄
                 BmpInfoHeader.biSize = Marshal.SizeOf(BmpInfoHeader);
                 BmpInfoHeader.biWidth = nWidth;
                 BmpInfoHeader.biHeight = nHeight;
@@ -239,7 +239,7 @@ namespace Sample
                 BmpInfoHeader.biClrUsed = m_nColorTableEntries;
                 BmpInfoHeader.biClrImportant = m_nColorTableEntries;
 
-                //文件头信息
+                //脦脛录镁脥路脨脜脧垄
                 BmpHeader.bfType = 0x4D42;
                 BmpHeader.bfOffBits = 14 + Marshal.SizeOf(BmpInfoHeader) + BmpInfoHeader.biClrUsed * 4;
                 BmpHeader.bfSize = BmpHeader.bfOffBits + ((((w * BmpInfoHeader.biBitCount + 31) / 32) * 4) * BmpInfoHeader.biHeight);
@@ -252,7 +252,7 @@ namespace Sample
                 TmpBinaryWriter.Write(StructToBytes(BmpHeader, 14));
                 TmpBinaryWriter.Write(StructToBytes(BmpInfoHeader, Marshal.SizeOf(BmpInfoHeader)));
 
-                //调试板信息
+                //碌梅脢脭掳氓脨脜脧垄
                 for (ColorIndex = 0; ColorIndex < m_nColorTableEntries; ColorIndex++)
                 {
                     ColorMask[ColorIndex].redmask = (byte)ColorIndex;
@@ -263,10 +263,10 @@ namespace Sample
                     TmpBinaryWriter.Write(StructToBytes(ColorMask[ColorIndex], Marshal.SizeOf(ColorMask[ColorIndex])));
                 }
 
-                //图片旋转，解决指纹图片倒立的问题
+                //脥录脝卢脨媒脳陋拢卢陆芒戮枚脰赂脦脝脥录脝卢碌鹿脕垄碌脛脦脢脤芒
                 RotatePic(buffer, nWidth, nHeight, ref ResBuf);
 
-                //写图片
+                //脨麓脥录脝卢
                 //TmpBinaryWriter.Write(ResBuf);
                 byte[] filter = null;
                 if (w - nWidth > 0)
