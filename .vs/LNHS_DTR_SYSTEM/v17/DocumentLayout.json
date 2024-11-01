@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\biometrics.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:biometrics.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\register.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:register.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,41 +26,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Biometrics.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.Designer.cs",
-              "RelativeDocumentMoniker": "Biometrics.Designer.cs",
-              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.Designer.cs",
-              "RelativeToolTip": "Biometrics.Designer.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T04:48:46.667Z",
-              "EditorCaption": ""
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Register.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Register.Designer.cs",
-              "RelativeDocumentMoniker": "Register.Designer.cs",
-              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Register.Designer.cs",
-              "RelativeToolTip": "Register.Designer.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAlwI0AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T23:51:01.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Register.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Register.cs",
               "RelativeDocumentMoniker": "Register.cs",
@@ -72,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Biometrics.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.cs",
               "RelativeDocumentMoniker": "Biometrics.cs",
@@ -81,6 +55,32 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-30T23:50:10.103Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Register.cs",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Register.cs",
+              "RelativeDocumentMoniker": "Register.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Register.cs",
+              "RelativeToolTip": "Register.cs",
+              "ViewState": "AgIAAAgBAAAAAAAAAAAAwBQBAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T05:11:04.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Biometrics.cs",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.cs",
+              "RelativeDocumentMoniker": "Biometrics.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.cs",
+              "RelativeToolTip": "Biometrics.cs",
+              "ViewState": "AgIAAOEAAAAAAAAAAAA7wPkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T06:47:34.795Z",
+              "EditorCaption": ""
             }
           ]
         }

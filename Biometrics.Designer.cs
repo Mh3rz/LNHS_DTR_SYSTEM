@@ -56,14 +56,13 @@
             // 
             // txtStatus
             // 
-            this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStatus.Location = new System.Drawing.Point(119, 421);
             this.txtStatus.Margin = new System.Windows.Forms.Padding(4);
             this.txtStatus.Multiline = true;
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.Size = new System.Drawing.Size(531, 269);
             this.txtStatus.TabIndex = 13;
-            this.txtStatus.Text = "OUT";
             this.txtStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblStatus
@@ -85,6 +84,7 @@
             this.txtEmpName.Name = "txtEmpName";
             this.txtEmpName.Size = new System.Drawing.Size(531, 41);
             this.txtEmpName.TabIndex = 11;
+            this.txtEmpName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblEmpName
             // 
@@ -105,6 +105,7 @@
             this.txtEmpID.Name = "txtEmpID";
             this.txtEmpID.Size = new System.Drawing.Size(531, 41);
             this.txtEmpID.TabIndex = 9;
+            this.txtEmpID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblEmpId
             // 
@@ -188,6 +189,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Biometrics";
             this.Text = "Biometrics";
+            this.Load += new System.EventHandler(this.Biometrics_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picFPImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

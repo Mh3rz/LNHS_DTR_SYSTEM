@@ -212,21 +212,21 @@ namespace LNHS_DTR_SYSTEM
                 {
                     conn.Open();
 
-                    string selectQuery = "SELECT empNo, fingerprintTemplate FROM tbl_emprecord";
+                    string selectQuery = "SELECT empID, fingerprintTemplate FROM tbl_emprecord";
                     using (MySqlCommand cmd = new MySqlCommand(selectQuery, conn))
                     {
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                int empNo = reader.GetInt32(0);
+                                int empID = reader.GetInt32(0);
                                 string storedFingerprint = reader.GetString(1);
 
                                 byte[] storedTemplate = Base64ToBlob(storedFingerprint);
 
                                 if (zkfp2.DBMatch(mDBHandle, CapTmp, storedTemplate) > 0)
                                 {
-                                    txtStatus.Text = "Fingerprint already registered for employee " + empNo;
+                                    txtStatus.Text = "Fingerprint already registered for employee " + empID;
                                     return;
                                 }
                             }
@@ -271,10 +271,10 @@ namespace LNHS_DTR_SYSTEM
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "INSERT INTO tbl_emprecord (empNo, empName, fingerprintTemplate) VALUES (@empNo, @empName, @fingerprintTemplate)";
+                    string query = "INSERT INTO tbl_emprecord (empID, empName, fingerprintTemplate) VALUES (@empID, @empName, @fingerprintTemplate)";
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@empNo", txtEmpID.Text);
+                        cmd.Parameters.AddWithValue("@empID", txtEmpID.Text);
                         cmd.Parameters.AddWithValue("@empName", txtEmpName.Text);
                         cmd.Parameters.AddWithValue("@fingerprintTemplate", base64Fingerprint);
                         cmd.ExecuteNonQuery();
