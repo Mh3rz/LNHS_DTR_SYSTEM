@@ -85,6 +85,12 @@
     <Compile Include="AdminEmployeeList.Designer.cs">
       <DependentUpon>AdminEmployeeList.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminViewDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminViewDatabase.Designer.cs">
+      <DependentUpon>AdminViewDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="BitmapFormat.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminEmployeeList.resx">
       <DependentUpon>AdminEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminViewDatabase.resx">
+      <DependentUpon>AdminViewDatabase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

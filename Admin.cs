@@ -23,5 +23,12 @@ namespace LNHS_DTR_SYSTEM
 
             adminEmployeeList.Show();
         }
+
+        private void btnViewDatabase_Click(object sender, EventArgs e)
+        {
+            AdminViewDatabase adminViewDatabase = new AdminViewDatabase();
+            
+            adminViewDatabase.Show();
+        }
     }
 }

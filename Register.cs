@@ -237,7 +237,7 @@ namespace LNHS_DTR_SYSTEM
                         zkfp2.DBAdd(mDBHandle, iFid, RegTmp) == zkfp.ZKFP_ERR_OK)
                     {
                         iFid++;
-                        txtStatus.Text = "Fingerprint captured and saved successfully!";
+                        txtStatus.Text = "Fingerprint captured! You can now HIT \"SAVE\" to Save the Employee Record.";
                     }
                     else
                     {

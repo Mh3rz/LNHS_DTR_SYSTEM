@@ -84,6 +84,7 @@
             this.btnViewDatabase.TabIndex = 12;
             this.btnViewDatabase.Text = "VIEW DATABASE";
             this.btnViewDatabase.UseVisualStyleBackColor = false;
+            this.btnViewDatabase.Click += new System.EventHandler(this.btnViewDatabase_Click);
             // 
             // Admin
             // 

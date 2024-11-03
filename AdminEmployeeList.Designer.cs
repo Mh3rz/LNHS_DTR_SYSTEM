@@ -1,4 +1,6 @@
-﻿namespace LNHS_DTR_SYSTEM
+﻿using System.Windows.Forms;
+
+namespace LNHS_DTR_SYSTEM
 {
     partial class AdminEmployeeList
     {
@@ -29,140 +31,83 @@
         private void InitializeComponent()
         {
             this.lblEmpId = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtEmpID = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.lblEmpName = new System.Windows.Forms.Label();
+            this.lblPrivilege = new System.Windows.Forms.Label();
+            this.lblEmpList = new System.Windows.Forms.Label();
+            this.dataGVEmpList = new System.Windows.Forms.DataGridView();
             this.empID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.privilege = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txtEmpID = new System.Windows.Forms.TextBox();
+            this.txtxEmpName = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.txtHiddenID = new System.Windows.Forms.TextBox();
+            this.cmbPrivilege = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGVEmpList)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEmpId
             // 
             this.lblEmpId.AutoSize = true;
-            this.lblEmpId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmpId.Location = new System.Drawing.Point(108, 94);
             this.lblEmpId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmpId.Name = "lblEmpId";
-            this.lblEmpId.Size = new System.Drawing.Size(199, 29);
+            this.lblEmpId.Size = new System.Drawing.Size(211, 31);
             this.lblEmpId.TabIndex = 9;
             this.lblEmpId.Text = "EMPLOYEE ID: ";
             // 
-            // label1
+            // lblEmpName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(108, 156);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 29);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "EMPLOYEE NAME: ";
+            this.lblEmpName.AutoSize = true;
+            this.lblEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpName.Location = new System.Drawing.Point(108, 156);
+            this.lblEmpName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpName.Name = "lblEmpName";
+            this.lblEmpName.Size = new System.Drawing.Size(263, 31);
+            this.lblEmpName.TabIndex = 10;
+            this.lblEmpName.Text = "EMPLOYEE NAME: ";
             // 
-            // label2
+            // lblPrivilege
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(108, 224);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 29);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "PRIVILEGE: ";
+            this.lblPrivilege.AutoSize = true;
+            this.lblPrivilege.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrivilege.Location = new System.Drawing.Point(108, 224);
+            this.lblPrivilege.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrivilege.Name = "lblPrivilege";
+            this.lblPrivilege.Size = new System.Drawing.Size(170, 31);
+            this.lblPrivilege.TabIndex = 11;
+            this.lblPrivilege.Text = "PRIVILEGE: ";
             // 
-            // label3
+            // lblEmpList
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(108, 300);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(222, 29);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "EMPLOYEE LIST ";
+            this.lblEmpList.AutoSize = true;
+            this.lblEmpList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpList.Location = new System.Drawing.Point(108, 300);
+            this.lblEmpList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpList.Name = "lblEmpList";
+            this.lblEmpList.Size = new System.Drawing.Size(222, 29);
+            this.lblEmpList.TabIndex = 12;
+            this.lblEmpList.Text = "EMPLOYEE LIST ";
             // 
-            // dataGridView1
+            // dataGVEmpList
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.empID,
-            this.empName,
-            this.privilege});
-            this.dataGridView1.Location = new System.Drawing.Point(113, 339);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 411);
-            this.dataGridView1.TabIndex = 13;
-            // 
-            // txtEmpID
-            // 
-            this.txtEmpID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpID.Location = new System.Drawing.Point(352, 85);
-            this.txtEmpID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.Size = new System.Drawing.Size(541, 41);
-            this.txtEmpID.TabIndex = 14;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(352, 151);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(541, 41);
-            this.textBox1.TabIndex = 15;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(352, 215);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(285, 41);
-            this.textBox2.TabIndex = 16;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1053, 85);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(510, 71);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "EDIT";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1053, 185);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(510, 71);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "UPDATE";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(1053, 279);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(510, 71);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "DELETE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.dataGVEmpList.AllowUserToOrderColumns = true;
+            this.dataGVEmpList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGVEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGVEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGVEmpList.Location = new System.Drawing.Point(113, 339);
+            this.dataGVEmpList.Name = "dataGVEmpList";
+            this.dataGVEmpList.RowHeadersWidth = 51;
+            this.dataGVEmpList.RowTemplate.Height = 24;
+            this.dataGVEmpList.Size = new System.Drawing.Size(780, 411);
+            this.dataGVEmpList.TabIndex = 13;
+            this.dataGVEmpList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVEmpList_CellClick);
             // 
             // empID
             // 
@@ -185,26 +130,114 @@
             this.privilege.Name = "privilege";
             this.privilege.Width = 125;
             // 
+            // txtEmpID
+            // 
+            this.txtEmpID.Enabled = false;
+            this.txtEmpID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpID.Location = new System.Drawing.Point(351, 85);
+            this.txtEmpID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmpID.Name = "txtEmpID";
+            this.txtEmpID.Size = new System.Drawing.Size(542, 41);
+            this.txtEmpID.TabIndex = 14;
+            // 
+            // txtxEmpName
+            // 
+            this.txtxEmpName.Enabled = false;
+            this.txtxEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtxEmpName.Location = new System.Drawing.Point(351, 151);
+            this.txtxEmpName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtxEmpName.Name = "txtxEmpName";
+            this.txtxEmpName.Size = new System.Drawing.Size(542, 41);
+            this.txtxEmpName.TabIndex = 15;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(1053, 85);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(510, 71);
+            this.btnEdit.TabIndex = 17;
+            this.btnEdit.Text = "EDIT";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(1053, 185);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(510, 71);
+            this.btnUpdate.TabIndex = 18;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(1053, 290);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(510, 71);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Location = new System.Drawing.Point(1053, 391);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(510, 71);
+            this.btnRefresh.TabIndex = 20;
+            this.btnRefresh.Text = "REFRESH";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // txtHiddenID
+            // 
+            this.txtHiddenID.Location = new System.Drawing.Point(351, 56);
+            this.txtHiddenID.Name = "txtHiddenID";
+            this.txtHiddenID.Size = new System.Drawing.Size(68, 22);
+            this.txtHiddenID.TabIndex = 21;
+            this.txtHiddenID.Visible = false;
+            // 
+            // cmbPrivilege
+            // 
+            this.cmbPrivilege.Enabled = false;
+            this.cmbPrivilege.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPrivilege.FormattingEnabled = true;
+            this.cmbPrivilege.Location = new System.Drawing.Point(351, 215);
+            this.cmbPrivilege.Name = "cmbPrivilege";
+            this.cmbPrivilege.Size = new System.Drawing.Size(218, 44);
+            this.cmbPrivilege.TabIndex = 22;
+            // 
             // AdminEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1686, 839);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cmbPrivilege);
+            this.Controls.Add(this.txtHiddenID);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.txtxEmpName);
             this.Controls.Add(this.txtEmpID);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataGVEmpList);
+            this.Controls.Add(this.lblEmpList);
+            this.Controls.Add(this.lblPrivilege);
+            this.Controls.Add(this.lblEmpName);
             this.Controls.Add(this.lblEmpId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AdminEmployeeList";
             this.Text = "AdminEmployeeList";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGVEmpList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,18 +246,20 @@
         #endregion
 
         private System.Windows.Forms.Label lblEmpId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblEmpName;
+        private System.Windows.Forms.Label lblPrivilege;
+        private System.Windows.Forms.Label lblEmpList;
+        private System.Windows.Forms.DataGridView dataGVEmpList;
         private System.Windows.Forms.TextBox txtEmpID;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtxEmpName;
         private System.Windows.Forms.DataGridViewTextBoxColumn empID;
         private System.Windows.Forms.DataGridViewTextBoxColumn empName;
         private System.Windows.Forms.DataGridViewTextBoxColumn privilege;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnRefresh;
+        private TextBox txtHiddenID;
+        private ComboBox cmbPrivilege;
     }
 }
