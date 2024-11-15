@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblEmpId = new System.Windows.Forms.Label();
-            this.btnDLDTR = new System.Windows.Forms.Button();
+            this.btnGenerateDTR = new System.Windows.Forms.Button();
             this.btnEmployeeList = new System.Windows.Forms.Button();
             this.btnViewDatabase = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,18 +45,19 @@
             this.lblEmpId.TabIndex = 9;
             this.lblEmpId.Text = "ADMINISTRATION - CONTROLS";
             // 
-            // btnDLDTR
+            // btnGenerateDTR
             // 
-            this.btnDLDTR.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnDLDTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDLDTR.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDLDTR.Location = new System.Drawing.Point(127, 316);
-            this.btnDLDTR.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDLDTR.Name = "btnDLDTR";
-            this.btnDLDTR.Size = new System.Drawing.Size(441, 206);
-            this.btnDLDTR.TabIndex = 10;
-            this.btnDLDTR.Text = "DOWNLOAD DTR";
-            this.btnDLDTR.UseVisualStyleBackColor = false;
+            this.btnGenerateDTR.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnGenerateDTR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateDTR.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGenerateDTR.Location = new System.Drawing.Point(127, 316);
+            this.btnGenerateDTR.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGenerateDTR.Name = "btnGenerateDTR";
+            this.btnGenerateDTR.Size = new System.Drawing.Size(441, 206);
+            this.btnGenerateDTR.TabIndex = 10;
+            this.btnGenerateDTR.Text = "GENERATE DTR";
+            this.btnGenerateDTR.UseVisualStyleBackColor = false;
+            this.btnGenerateDTR.Click += new System.EventHandler(this.btnGenerateDTR_Click);
             // 
             // btnEmployeeList
             // 
@@ -93,7 +94,7 @@
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.btnViewDatabase);
             this.Controls.Add(this.btnEmployeeList);
-            this.Controls.Add(this.btnDLDTR);
+            this.Controls.Add(this.btnGenerateDTR);
             this.Controls.Add(this.lblEmpId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -107,7 +108,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblEmpId;
-        private System.Windows.Forms.Button btnDLDTR;
+        private System.Windows.Forms.Button btnGenerateDTR;
         private System.Windows.Forms.Button btnEmployeeList;
         private System.Windows.Forms.Button btnViewDatabase;
     }

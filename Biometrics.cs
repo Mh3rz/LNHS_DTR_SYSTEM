@@ -284,25 +284,78 @@ namespace LNHS_DTR_SYSTEM
         {
             isInsertingAttendance = true; // Set flag to true before inserting
 
-            // Query to check if there is an existing entry for this employee today
-            string selectAttendanceQuery = "SELECT status FROM tbl_attendance_record " +
+            // Get today's date
+            DateTime today = DateTime.Now.Date;
+
+            // Query to count today's attendance records
+            string countAttendanceQuery = "SELECT COUNT(*) FROM tbl_attendance_record WHERE empID = @empID AND date = @date";
+            using (MySqlCommand countCmd = new MySqlCommand(countAttendanceQuery, conn))
+            {
+                countCmd.Parameters.AddWithValue("@empID", empID);
+                countCmd.Parameters.AddWithValue("@date", today);
+
+                int recordCount = Convert.ToInt32(countCmd.ExecuteScalar());
+                if (recordCount >= 4) // If there are already 4 records
+                {
+                    UpdateUI("Attendance limit reached for today. Cannot record more entries.", Color.Red, string.Empty, string.Empty);
+                    isInsertingAttendance = false; // Reset flag after checking
+                    return; // Enforce the limit with no bypass option
+                }
+            }
+
+            // Determine the last status
+            string selectAttendanceQuery = "SELECT status, time FROM tbl_attendance_record " +
                                            "WHERE empID = @empID AND date = @date " +
                                            "ORDER BY id DESC LIMIT 1";
+
             string newStatus = "IN"; // Default to IN status
+            TimeSpan lastTime = TimeSpan.Zero; // Initialize to zero
 
             using (MySqlCommand cmd = new MySqlCommand(selectAttendanceQuery, conn))
             {
                 cmd.Parameters.AddWithValue("@empID", empID);
-                cmd.Parameters.AddWithValue("@date", DateTime.Now.Date);
+                cmd.Parameters.AddWithValue("@date", today);
 
-                var lastStatus = cmd.ExecuteScalar();
-                if (lastStatus != null && lastStatus.ToString() == "IN")
+                using (var reader = cmd.ExecuteReader())
                 {
-                    newStatus = "OUT"; // If the last status was IN, set new status to OUT
+                    if (reader.Read())
+                    {
+                        var lastStatus = reader["status"].ToString();
+                        lastTime = (TimeSpan)reader["time"]; // Cast the time correctly
+
+                        TimeSpan currentTime = DateTime.Now.TimeOfDay; // Get the current time
+
+                        if (lastStatus == "IN")
+                        {
+                            newStatus = "OUT";
+
+                            if (currentTime < new TimeSpan(11, 50, 0) || currentTime > new TimeSpan(13, 0, 0))
+                            {
+                                if (!ShowBypassMessage("You can only clock out between 11:50 AM and 1:00 PM. Do you want to bypass this restriction?"))
+                                {
+                                    isInsertingAttendance = false; // Reset flag after checking
+                                    return;
+                                }
+                            }
+                        }
+                        else if (lastStatus == "OUT")
+                        {
+                            newStatus = "IN";
+
+                            if (currentTime < new TimeSpan(12, 0, 0) || currentTime >= new TimeSpan(13, 30, 0))
+                            {
+                                if (!ShowBypassMessage("You can clock in again between 12:00 PM and 1:30 PM. Do you want to bypass this restriction?"))
+                                {
+                                    isInsertingAttendance = false; // Reset flag after checking
+                                    return;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
-            // Insert the attendance record
+            // Insert the attendance record if all conditions are met or bypassed
             string insertQuery = "INSERT INTO tbl_attendance_record (empID, empName, date, day, time, status) " +
                                  "VALUES (@empID, @empName, @date, @day, @time, @status)";
 
@@ -310,9 +363,9 @@ namespace LNHS_DTR_SYSTEM
             {
                 insertCmd.Parameters.AddWithValue("@empID", empID);
                 insertCmd.Parameters.AddWithValue("@empName", empName);
-                insertCmd.Parameters.AddWithValue("@date", DateTime.Now.Date);
+                insertCmd.Parameters.AddWithValue("@date", today);
                 insertCmd.Parameters.AddWithValue("@day", DateTime.Now.DayOfWeek.ToString());
-                insertCmd.Parameters.AddWithValue("@time", DateTime.Now.TimeOfDay);
+                insertCmd.Parameters.AddWithValue("@time", DateTime.Now.TimeOfDay); // Set current time
                 insertCmd.Parameters.AddWithValue("@status", newStatus);
                 insertCmd.ExecuteNonQuery();
             }
@@ -321,6 +374,17 @@ namespace LNHS_DTR_SYSTEM
             isInsertingAttendance = false; // Reset flag after insertion
         }
 
+        // Helper method to show a bypass confirmation message box
+        private bool ShowBypassMessage(string message)
+        {
+            DialogResult result = MessageBox.Show(message, "Bypass Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            return result == DialogResult.Yes; // Return true if the user clicks "Yes"
+        }
+
+
+
+
         private void UpdateUI(string message, Color color, string empID, string empName)
         {
             txtStatus.Text = message;
@@ -328,6 +392,6 @@ namespace LNHS_DTR_SYSTEM
             // Optionally, you can display the empID and empName in other UI elements as needed
         }
 
-        
+
     }
 }

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClosedXML.Excel;
+using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace LNHS_DTR_SYSTEM
 {
@@ -30,5 +33,17 @@ namespace LNHS_DTR_SYSTEM
             
             adminViewDatabase.Show();
         }
+
+        private void btnGenerateDTR_Click(object sender, EventArgs e)
+        {
+            AdminGenerateDTR adminGenerateDTR = new AdminGenerateDTR();
+
+            adminGenerateDTR.Show();
+
+
+            
+        }
+
+        
     }
 }
