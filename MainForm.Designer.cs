@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnBiometricsMain = new System.Windows.Forms.Button();
             this.btnRegisterMain = new System.Windows.Forms.Button();
             this.btnAdminMain = new System.Windows.Forms.Button();
@@ -35,12 +36,13 @@
             // 
             // btnBiometricsMain
             // 
+            this.btnBiometricsMain.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnBiometricsMain.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnBiometricsMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBiometricsMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBiometricsMain.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBiometricsMain.Location = new System.Drawing.Point(486, 63);
+            this.btnBiometricsMain.Location = new System.Drawing.Point(443, 22);
             this.btnBiometricsMain.Name = "btnBiometricsMain";
-            this.btnBiometricsMain.Size = new System.Drawing.Size(331, 167);
+            this.btnBiometricsMain.Size = new System.Drawing.Size(404, 184);
             this.btnBiometricsMain.TabIndex = 0;
             this.btnBiometricsMain.Text = "BIOMETRICS";
             this.btnBiometricsMain.UseVisualStyleBackColor = false;
@@ -48,12 +50,13 @@
             // 
             // btnRegisterMain
             // 
+            this.btnRegisterMain.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRegisterMain.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnRegisterMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegisterMain.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRegisterMain.Location = new System.Drawing.Point(486, 254);
+            this.btnRegisterMain.Location = new System.Drawing.Point(443, 248);
             this.btnRegisterMain.Name = "btnRegisterMain";
-            this.btnRegisterMain.Size = new System.Drawing.Size(331, 167);
+            this.btnRegisterMain.Size = new System.Drawing.Size(404, 184);
             this.btnRegisterMain.TabIndex = 1;
             this.btnRegisterMain.Text = "REGISTER";
             this.btnRegisterMain.UseVisualStyleBackColor = false;
@@ -61,12 +64,13 @@
             // 
             // btnAdminMain
             // 
+            this.btnAdminMain.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAdminMain.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnAdminMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdminMain.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdminMain.Location = new System.Drawing.Point(486, 447);
+            this.btnAdminMain.Location = new System.Drawing.Point(443, 474);
             this.btnAdminMain.Name = "btnAdminMain";
-            this.btnAdminMain.Size = new System.Drawing.Size(331, 167);
+            this.btnAdminMain.Size = new System.Drawing.Size(404, 184);
             this.btnAdminMain.TabIndex = 2;
             this.btnAdminMain.Text = "ADMIN";
             this.btnAdminMain.UseVisualStyleBackColor = false;
@@ -76,15 +80,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.btnAdminMain);
             this.Controls.Add(this.btnRegisterMain);
             this.Controls.Add(this.btnBiometricsMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LNSH Biometrics";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

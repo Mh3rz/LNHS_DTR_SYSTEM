@@ -42,16 +42,34 @@ namespace LNHS_DTR_SYSTEM
         [DllImport("user32.dll", EntryPoint = "SendMessageA")]
         public static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
+        // Add a Timer object as a class-level variable
+        private System.Windows.Forms.Timer resetTimer = new System.Windows.Forms.Timer();
+
         public Biometrics()
         {
             InitializeComponent();
             this.FormClosing += Biometrics_FormClosing;
 
-            // Set up the Timer
+            // Set up the reset Timer
+            resetTimer.Interval = 5000; // 5 seconds
+            resetTimer.Tick += ResetTimer_Tick;
+
+            // Set up the Timer for date and time updates
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = 1000; // 1 second
             timer.Tick += Timer_Tick;
             timer.Start();
+        }
+        // Timer Tick event to reset the UI after 5 seconds
+        private void ResetTimer_Tick(object sender, EventArgs e)
+        {
+            // Stop the timer to prevent repetitive execution
+            resetTimer.Stop();
+
+            // Clear the fingerprint image and reset the status message
+            picFPImage.Image = null;
+            txtStatus.Text = "Please place your finger on the scanner to record your attendance for today. Thank you!";
+            txtStatus.ForeColor = Color.Blue;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -100,7 +118,8 @@ namespace LNHS_DTR_SYSTEM
 
             if (IntPtr.Zero == (mDevHandle = zkfp2.OpenDevice(cmbIdx.SelectedIndex)))
             {
-                txtStatus.Text = "OpenDevice failed";
+                txtStatus.Text = "ZKTeco Sensor connection failed. Please verify that the device is properly connected and then restart the application.";
+                txtStatus.ForeColor = Color.OrangeRed;
                 return;
             }
             if (IntPtr.Zero == (mDBHandle = zkfp2.DBInit()))
@@ -136,7 +155,8 @@ namespace LNHS_DTR_SYSTEM
                 IsRegister = true;
                 RegisterCount = 0;
                 cbRegTmp = 0;
-                txtStatus.Text = "Please press your finger!";
+                txtStatus.Text = "Please place your finger on the scanner to record your attendance for today. Thank you!";
+                txtStatus.ForeColor = Color.Blue;
             }
         }
 
@@ -174,35 +194,17 @@ namespace LNHS_DTR_SYSTEM
 
                         if (IsRegister)
                         {
-                            int ret = zkfp.ZKFP_ERR_OK;
-                            int fid = 0, score = 0;
-
-                            ret = zkfp2.DBIdentify(mDBHandle, CapTmp, ref fid, ref score);
-                            if (zkfp.ZKFP_ERR_OK == ret)
-                            {
-                                txtStatus.Text = "This finger was already registered by " + fid + "!";
-                                return;
-                            }
-
-                            if (RegisterCount > 0 && zkfp2.DBMatch(mDBHandle, CapTmp, RegTmp) <= 0)
-                            {
-                                txtStatus.Text = "Please press the same finger again.";
-                                return;
-                            }
-
                             Array.Copy(CapTmp, RegTmp, cbCapTmp);
                             RegisterCount++;
 
                             if (RegisterCount >= REGISTER_FINGER_COUNT)
                             {
                                 RegisterCount = 0;
-                                txtStatus.Text = "Checking for existing fingerprints...";
+                                txtStatus.Text = "Checking the database for your record. Please wait...";
+                                txtStatus.ForeColor = Color.BlueViolet;
                                 CheckExistingFingerprint();
                             }
-                            else
-                            {
-                                txtStatus.Text = "You need to press the fingerprint " + (REGISTER_FINGER_COUNT - RegisterCount) + " more time(s)";
-                            }
+                            
                         }
 
                     }
@@ -267,7 +269,7 @@ namespace LNHS_DTR_SYSTEM
 
                             if (!matchFound)
                             {
-                                UpdateUI("No match found. Please try again.", Color.Red, string.Empty, string.Empty);
+                                UpdateUI("No match found. Please try again.", Color.Red);
                             }
                         }
                     }
@@ -275,7 +277,7 @@ namespace LNHS_DTR_SYSTEM
             }
             catch (Exception ex)
             {
-                UpdateUI("An error occurred while checking fingerprints: " + ex.Message, Color.Red, string.Empty, string.Empty);
+                UpdateUI("An error occurred while checking fingerprints: " + ex.Message + "Please check the Xampp Application if MySQL has Started.", Color.Red);
             }
         }
 
@@ -289,26 +291,32 @@ namespace LNHS_DTR_SYSTEM
 
             // Query to count today's attendance records
             string countAttendanceQuery = "SELECT COUNT(*) FROM tbl_attendance_record WHERE empID = @empID AND date = @date";
+            int recordCount = 0;
+
             using (MySqlCommand countCmd = new MySqlCommand(countAttendanceQuery, conn))
             {
                 countCmd.Parameters.AddWithValue("@empID", empID);
                 countCmd.Parameters.AddWithValue("@date", today);
 
-                int recordCount = Convert.ToInt32(countCmd.ExecuteScalar());
+                recordCount = Convert.ToInt32(countCmd.ExecuteScalar());
+
+                // Log the record count to the console for debugging
+                Console.WriteLine($"Record count for employee ID {empID} on {today:yyyy-MM-dd}: {recordCount}");
                 if (recordCount >= 4) // If there are already 4 records
                 {
-                    UpdateUI("Attendance limit reached for today. Cannot record more entries.", Color.Red, string.Empty, string.Empty);
+                    UpdateUI("Attendance limit reached for today. Cannot record more entries.", Color.Red);
                     isInsertingAttendance = false; // Reset flag after checking
                     return; // Enforce the limit with no bypass option
                 }
             }
 
             // Determine the last status
-            string selectAttendanceQuery = "SELECT status, time FROM tbl_attendance_record " +
+            string selectAttendanceQuery = "SELECT status, time, entry_rank FROM tbl_attendance_record " +
                                            "WHERE empID = @empID AND date = @date " +
                                            "ORDER BY id DESC LIMIT 1";
 
             string newStatus = "IN"; // Default to IN status
+            string newEntry = "first"; // Default for First Entry per employee
             TimeSpan lastTime = TimeSpan.Zero; // Initialize to zero
 
             using (MySqlCommand cmd = new MySqlCommand(selectAttendanceQuery, conn))
@@ -321,30 +329,49 @@ namespace LNHS_DTR_SYSTEM
                     if (reader.Read())
                     {
                         var lastStatus = reader["status"].ToString();
+                        var lastEntry = reader["entry_rank"].ToString();
                         lastTime = (TimeSpan)reader["time"]; // Cast the time correctly
 
                         TimeSpan currentTime = DateTime.Now.TimeOfDay; // Get the current time
 
-                        if (lastStatus == "IN")
+                        if (lastStatus == "IN" && lastEntry == "first")
                         {
                             newStatus = "OUT";
+                            newEntry = "second";
 
-                            if (currentTime < new TimeSpan(11, 50, 0) || currentTime > new TimeSpan(13, 0, 0))
+                            if (currentTime < new TimeSpan(12, 0, 0) || currentTime > new TimeSpan(13, 0, 0))
                             {
-                                if (!ShowBypassMessage("You can only clock out between 11:50 AM and 1:00 PM. Do you want to bypass this restriction?"))
+                                //if (!ShowBypassMessage("YOU ALREADY CLOCKED IN!!! You can only CLOCK OUT between 11:00 AM and 1:00 PM. Do you want to bypass this restriction?"))
+                                if (!ShowBypassMessage("Time-OUT Restriction Active!!!", "You can only CLOCK OUT at the scheduled time (12:00 PM to 1:00 PM).", "Do you want to proceed with clocking out?"))
+                                {
+                                    isInsertingAttendance = false; // Reset flag after checking
+                                    return;
+                                }
+                            } 
+                        }
+                        else if (lastStatus == "OUT" && lastEntry == "second")
+                        {
+                            newStatus = "IN";
+                            newEntry = "third";
+
+                            if (currentTime < new TimeSpan(12, 10, 0) || currentTime >= new TimeSpan(13, 0, 0))
+                            {
+                                if (!ShowBypassMessage("Time-IN Restriction Active!!!", "You can only CLOCK IN at the scheduled time (12:10 PM to 1:00 PM).", "Do you want to proceed with clocking in?"))
                                 {
                                     isInsertingAttendance = false; // Reset flag after checking
                                     return;
                                 }
                             }
                         }
-                        else if (lastStatus == "OUT")
-                        {
-                            newStatus = "IN";
 
-                            if (currentTime < new TimeSpan(12, 0, 0) || currentTime >= new TimeSpan(13, 30, 0))
+                        else if (lastStatus == "IN" && lastEntry == "third")
+                        {
+                            newStatus = "OUT";
+                            newEntry = "fourth";
+
+                            if (currentTime < new TimeSpan(16, 0, 0) || currentTime >= new TimeSpan(18, 0, 0))
                             {
-                                if (!ShowBypassMessage("You can clock in again between 12:00 PM and 1:30 PM. Do you want to bypass this restriction?"))
+                                if (!ShowBypassMessage("Time-Out Restriction Active!!!", "You can only CLOCK OUT at the scheduled time (4:00 PM to 6:00 PM).", "Do you want to proceed with clocking out?"))
                                 {
                                     isInsertingAttendance = false; // Reset flag after checking
                                     return;
@@ -356,8 +383,8 @@ namespace LNHS_DTR_SYSTEM
             }
 
             // Insert the attendance record if all conditions are met or bypassed
-            string insertQuery = "INSERT INTO tbl_attendance_record (empID, empName, date, day, time, status) " +
-                                 "VALUES (@empID, @empName, @date, @day, @time, @status)";
+            string insertQuery = "INSERT INTO tbl_attendance_record (empID, empName, date, day, time, status, entry_rank) " +
+                                 "VALUES (@empID, @empName, @date, @day, @time, @status, @entry_rank)";
 
             using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn))
             {
@@ -367,31 +394,48 @@ namespace LNHS_DTR_SYSTEM
                 insertCmd.Parameters.AddWithValue("@day", DateTime.Now.DayOfWeek.ToString());
                 insertCmd.Parameters.AddWithValue("@time", DateTime.Now.TimeOfDay); // Set current time
                 insertCmd.Parameters.AddWithValue("@status", newStatus);
+                insertCmd.Parameters.AddWithValue("@entry_rank", newEntry);
                 insertCmd.ExecuteNonQuery();
             }
 
-            UpdateUI($"Attendance recorded successfully: {newStatus} for {empName}.", Color.Green, empID.ToString(), empName);
+            UpdateUI($"Attendance recorded successfully: {newStatus} for {empName}.", Color.Green);
             isInsertingAttendance = false; // Reset flag after insertion
+                                           
+            //picFPImage.Image = null;// Clear picImageFP by setting its image to null
         }
 
         // Helper method to show a bypass confirmation message box
-        private bool ShowBypassMessage(string message)
+        private bool ShowBypassMessage(string boldText, string regularText, string bypassMessage)
         {
-            DialogResult result = MessageBox.Show(message, "Bypass Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = CustomMessageBox.Show(boldText, regularText, bypassMessage);
 
-            return result == DialogResult.Yes; // Return true if the user clicks "Yes"
+            if (result == DialogResult.No)
+            {
+                // Update txtStatus to display the message
+                txtStatus.Text = "Press your finger at the fingerprint scanner.";
+                txtStatus.ForeColor = Color.Blue;
+
+                // Clear picImageFP by setting its image to null
+                picFPImage.Image = null;
+
+                return false; // Return false since the user chose not to bypass
+            }
+
+            return true; // Return true if the user clicks "Yes"
         }
 
 
 
 
-        private void UpdateUI(string message, Color color, string empID, string empName)
+
+        private void UpdateUI(string message, Color color)
         {
             txtStatus.Text = message;
             txtStatus.ForeColor = color;
             // Optionally, you can display the empID and empName in other UI elements as needed
+
+            // Start the reset timer after updating the UI
+            resetTimer.Start();
         }
-
-
     }
 }

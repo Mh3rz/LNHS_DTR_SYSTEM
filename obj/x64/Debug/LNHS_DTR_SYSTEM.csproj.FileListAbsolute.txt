@@ -47,3 +47,10 @@ C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\bin\x64\Debug\
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\bin\x64\Debug\System.Numerics.Vectors.xml
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.AdminGenerateDTR.resources
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.CustomMessageBox.resources
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\bin\x64\Debug\LNHS_DTR_SYSTEM.exe.manifest
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\bin\x64\Debug\LNHS_DTR_SYSTEM.application
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.exe.manifest
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.application
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.AdminAccount.resources
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.AdminLoginForm.resources

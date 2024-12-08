@@ -30,6 +30,7 @@ namespace LNHS_DTR_SYSTEM
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminEmployeeList));
             this.lblEmpId = new System.Windows.Forms.Label();
             this.lblEmpName = new System.Windows.Forms.Label();
             this.lblPrivilege = new System.Windows.Forms.Label();
@@ -52,60 +53,55 @@ namespace LNHS_DTR_SYSTEM
             // lblEmpId
             // 
             this.lblEmpId.AutoSize = true;
-            this.lblEmpId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpId.Location = new System.Drawing.Point(108, 94);
-            this.lblEmpId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpId.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpId.Location = new System.Drawing.Point(43, 47);
             this.lblEmpId.Name = "lblEmpId";
-            this.lblEmpId.Size = new System.Drawing.Size(211, 31);
+            this.lblEmpId.Size = new System.Drawing.Size(199, 29);
             this.lblEmpId.TabIndex = 9;
             this.lblEmpId.Text = "EMPLOYEE ID: ";
             // 
             // lblEmpName
             // 
             this.lblEmpName.AutoSize = true;
-            this.lblEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpName.Location = new System.Drawing.Point(108, 156);
-            this.lblEmpName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpName.Location = new System.Drawing.Point(43, 97);
             this.lblEmpName.Name = "lblEmpName";
-            this.lblEmpName.Size = new System.Drawing.Size(263, 31);
+            this.lblEmpName.Size = new System.Drawing.Size(247, 29);
             this.lblEmpName.TabIndex = 10;
             this.lblEmpName.Text = "EMPLOYEE NAME: ";
             // 
             // lblPrivilege
             // 
             this.lblPrivilege.AutoSize = true;
-            this.lblPrivilege.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrivilege.Location = new System.Drawing.Point(108, 224);
-            this.lblPrivilege.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrivilege.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrivilege.Location = new System.Drawing.Point(43, 152);
             this.lblPrivilege.Name = "lblPrivilege";
-            this.lblPrivilege.Size = new System.Drawing.Size(170, 31);
+            this.lblPrivilege.Size = new System.Drawing.Size(159, 29);
             this.lblPrivilege.TabIndex = 11;
             this.lblPrivilege.Text = "PRIVILEGE: ";
             // 
             // lblEmpList
             // 
             this.lblEmpList.AutoSize = true;
-            this.lblEmpList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpList.Location = new System.Drawing.Point(108, 300);
-            this.lblEmpList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpList.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpList.Location = new System.Drawing.Point(42, 214);
             this.lblEmpList.Name = "lblEmpList";
-            this.lblEmpList.Size = new System.Drawing.Size(222, 29);
+            this.lblEmpList.Size = new System.Drawing.Size(248, 31);
             this.lblEmpList.TabIndex = 12;
             this.lblEmpList.Text = "EMPLOYEE LIST ";
             // 
             // dataGVEmpList
             // 
             this.dataGVEmpList.AllowUserToOrderColumns = true;
-            this.dataGVEmpList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGVEmpList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGVEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGVEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVEmpList.Location = new System.Drawing.Point(113, 339);
+            this.dataGVEmpList.Location = new System.Drawing.Point(48, 257);
+            this.dataGVEmpList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGVEmpList.Name = "dataGVEmpList";
             this.dataGVEmpList.RowHeadersWidth = 51;
             this.dataGVEmpList.RowTemplate.Height = 24;
-            this.dataGVEmpList.Size = new System.Drawing.Size(780, 411);
+            this.dataGVEmpList.Size = new System.Drawing.Size(984, 391);
             this.dataGVEmpList.TabIndex = 13;
             this.dataGVEmpList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVEmpList_CellClick);
             // 
@@ -133,30 +129,29 @@ namespace LNHS_DTR_SYSTEM
             // txtEmpID
             // 
             this.txtEmpID.Enabled = false;
-            this.txtEmpID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpID.Location = new System.Drawing.Point(351, 85);
-            this.txtEmpID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmpID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpID.Location = new System.Drawing.Point(304, 47);
             this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.Size = new System.Drawing.Size(542, 41);
+            this.txtEmpID.Size = new System.Drawing.Size(442, 38);
             this.txtEmpID.TabIndex = 14;
             // 
             // txtxEmpName
             // 
             this.txtxEmpName.Enabled = false;
-            this.txtxEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtxEmpName.Location = new System.Drawing.Point(351, 151);
-            this.txtxEmpName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtxEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtxEmpName.Location = new System.Drawing.Point(304, 97);
             this.txtxEmpName.Name = "txtxEmpName";
-            this.txtxEmpName.Size = new System.Drawing.Size(542, 41);
+            this.txtxEmpName.Size = new System.Drawing.Size(442, 38);
             this.txtxEmpName.TabIndex = 15;
             // 
             // btnEdit
             // 
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(1053, 85);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEdit.Location = new System.Drawing.Point(1062, 256);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(510, 71);
+            this.btnEdit.Size = new System.Drawing.Size(168, 58);
             this.btnEdit.TabIndex = 17;
             this.btnEdit.Text = "EDIT";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -164,11 +159,12 @@ namespace LNHS_DTR_SYSTEM
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(1053, 185);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Location = new System.Drawing.Point(1062, 336);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(510, 71);
+            this.btnUpdate.Size = new System.Drawing.Size(168, 58);
             this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -176,11 +172,12 @@ namespace LNHS_DTR_SYSTEM
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(1053, 290);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(1062, 417);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(510, 71);
+            this.btnDelete.Size = new System.Drawing.Size(168, 58);
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -188,11 +185,12 @@ namespace LNHS_DTR_SYSTEM
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(1053, 391);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Location = new System.Drawing.Point(1062, 499);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(510, 71);
+            this.btnRefresh.Size = new System.Drawing.Size(168, 58);
             this.btnRefresh.TabIndex = 20;
             this.btnRefresh.Text = "REFRESH";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -200,27 +198,29 @@ namespace LNHS_DTR_SYSTEM
             // 
             // txtHiddenID
             // 
-            this.txtHiddenID.Location = new System.Drawing.Point(351, 56);
+            this.txtHiddenID.Location = new System.Drawing.Point(304, 22);
+            this.txtHiddenID.Margin = new System.Windows.Forms.Padding(2);
             this.txtHiddenID.Name = "txtHiddenID";
-            this.txtHiddenID.Size = new System.Drawing.Size(68, 22);
+            this.txtHiddenID.Size = new System.Drawing.Size(52, 20);
             this.txtHiddenID.TabIndex = 21;
             this.txtHiddenID.Visible = false;
             // 
             // cmbPrivilege
             // 
             this.cmbPrivilege.Enabled = false;
-            this.cmbPrivilege.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPrivilege.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrivilege.FormattingEnabled = true;
-            this.cmbPrivilege.Location = new System.Drawing.Point(351, 215);
+            this.cmbPrivilege.Location = new System.Drawing.Point(304, 152);
+            this.cmbPrivilege.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPrivilege.Name = "cmbPrivilege";
-            this.cmbPrivilege.Size = new System.Drawing.Size(218, 44);
+            this.cmbPrivilege.Size = new System.Drawing.Size(198, 39);
             this.cmbPrivilege.TabIndex = 22;
             // 
             // AdminEmployeeList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1686, 839);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.cmbPrivilege);
             this.Controls.Add(this.txtHiddenID);
             this.Controls.Add(this.btnRefresh);
@@ -234,9 +234,12 @@ namespace LNHS_DTR_SYSTEM
             this.Controls.Add(this.lblPrivilege);
             this.Controls.Add(this.lblEmpName);
             this.Controls.Add(this.lblEmpId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminEmployeeList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminEmployeeList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGVEmpList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

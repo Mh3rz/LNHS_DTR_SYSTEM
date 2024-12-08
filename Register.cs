@@ -225,8 +225,8 @@ namespace LNHS_DTR_SYSTEM
                                 byte[] storedTemplate = Base64ToBlob(storedFingerprint);
 
                                 if (zkfp2.DBMatch(mDBHandle, CapTmp, storedTemplate) > 0)
-                                {
-                                    txtStatus.Text = "Fingerprint already registered for employee " + empID;
+                                { 
+                                    txtStatus.Text = "Fingerprint already registered for employee " + empID + ". Please press \"CAPTURE FP\" again to register another Fingerprint.";
                                     return;
                                 }
                             }
