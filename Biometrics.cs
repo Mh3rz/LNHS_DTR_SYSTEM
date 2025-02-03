@@ -14,6 +14,8 @@ using Sample;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Timers;
+using System.Media;
+using WMPLib;
 
 namespace LNHS_DTR_SYSTEM
 {
@@ -231,6 +233,56 @@ namespace LNHS_DTR_SYSTEM
 
         private bool isInsertingAttendance = false; // Flag to prevent concurrent inserts
 
+        //private void CheckExistingFingerprint()
+        //{
+        //    try
+        //    {
+        //        string connectionString = "server=localhost;username=root;password=;database=labasan_dtr_system";
+        //        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        //        {
+        //            conn.Open();
+
+        //            string selectQuery = "SELECT empID, empName, fingerprintTemplate FROM tbl_emprecord";
+        //            using (MySqlCommand cmd = new MySqlCommand(selectQuery, conn))
+        //            {
+        //                using (MySqlDataReader reader = cmd.ExecuteReader())
+        //                {
+        //                    bool matchFound = false;
+
+        //                    while (reader.Read())
+        //                    {
+        //                        int empID = reader.GetInt32(0);
+        //                        string empName = reader.GetString(1);
+        //                        string storedFingerprint = reader.GetString(2);
+        //                        byte[] storedTemplate = Convert.FromBase64String(storedFingerprint);
+
+        //                        if (zkfp2.DBMatch(mDBHandle, CapTmp, storedTemplate) > 0)
+        //                        {
+        //                            matchFound = true;
+
+        //                            // Close the reader before proceeding to check the latest attendance record
+        //                            reader.Close();
+
+        //                            // Determine and set the status (IN or OUT) based on the employee's last record for today
+        //                            DetermineInOutStatus(empID, empName, conn);
+        //                            break;
+        //                        }
+        //                    }
+
+        //                    if (!matchFound)
+        //                    {
+        //                        UpdateUI("No match found. Please try again.", Color.Red);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        UpdateUI("An error occurred while checking fingerprints: " + ex.Message + "Please check the Xampp Application if MySQL has Started.", Color.Red);
+        //    }
+        //}
+
         private void CheckExistingFingerprint()
         {
             try
@@ -261,8 +313,8 @@ namespace LNHS_DTR_SYSTEM
                                     // Close the reader before proceeding to check the latest attendance record
                                     reader.Close();
 
-                                    // Determine and set the status (IN or OUT) based on the employee's last record for today
-                                    DetermineInOutStatus(empID, empName, conn);
+                                    // Handle attendance logic for matched fingerprint
+                                    HandleAttendance(empID, empName, conn);
                                     break;
                                 }
                             }
@@ -277,9 +329,135 @@ namespace LNHS_DTR_SYSTEM
             }
             catch (Exception ex)
             {
-                UpdateUI("An error occurred while checking fingerprints: " + ex.Message + "Please check the Xampp Application if MySQL has Started.", Color.Red);
+                UpdateUI("An error occurred while checking fingerprints: " + ex.Message + " Please check the XAMPP Application to ensure MySQL is started.", Color.Red);
             }
         }
+
+        private void HandleAttendance(int empID, string empName, MySqlConnection conn)
+        {
+            DateTime now = DateTime.Now;
+            string today = now.ToString("yyyy-MM-dd");
+
+            // Fetch today's attendance for the user
+            MySqlCommand attendanceCmd = new MySqlCommand(
+                "SELECT entry_rank FROM tbl_attendance_record WHERE empID = @empID AND date = @today",
+                conn
+            );
+            attendanceCmd.Parameters.AddWithValue("@empID", empID);
+            attendanceCmd.Parameters.AddWithValue("@today", today);
+
+            MySqlDataReader attendanceReader = attendanceCmd.ExecuteReader();
+            List<string> entryRanks = new List<string>();
+            while (attendanceReader.Read())
+            {
+                entryRanks.Add(attendanceReader["entry_rank"].ToString());
+            }
+            attendanceReader.Close();
+
+            // Check if "Fourth" entry already exists
+            if (entryRanks.Contains("Fourth"))
+            {
+                UpdateUI($"You have completed your attendance for today, {empName}.", Color.Red);
+                return;
+            }
+
+            // Determine the new entry rank
+            var (entryRank, status) = DetermineEntryRank(entryRanks, now);
+
+            if (entryRank == null)
+            {
+                UpdateUI($"Invalid time for attendance, {empName}.", Color.Red);
+                return;
+            }
+
+            // Insert new record into tbl_attendance_record
+            MySqlCommand insertCmd = new MySqlCommand(
+                "INSERT INTO tbl_attendance_record (empID, empName, date, day, time, status, entry_rank) VALUES (@empID, @empName, @date, @day, @time, @status, @entry_rank)",
+                conn
+            );
+            insertCmd.Parameters.AddWithValue("@empID", empID);
+            insertCmd.Parameters.AddWithValue("@empName", empName);
+            insertCmd.Parameters.AddWithValue("@date", today);
+            insertCmd.Parameters.AddWithValue("@day", now.DayOfWeek.ToString());
+            insertCmd.Parameters.AddWithValue("@time", now.ToString("HH:mm:ss"));
+            insertCmd.Parameters.AddWithValue("@status", status);
+            insertCmd.Parameters.AddWithValue("@entry_rank", entryRank);
+
+            // Execute the insert command
+            int rowsAffected = insertCmd.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
+            {
+                // Play a sound if the data insertion is successful
+                PlaySound("C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\sound.mp3");
+                using (PopupCard popup = new PopupCard(status))
+{
+    popup.ShowDialog();
+}
+                // Success message
+                UpdateUI($"Your '{entryRank}' entry has been recorded successfully, {empName}.", Color.Green);
+            }
+            else
+            {
+                // Failure message if insertion fails
+                UpdateUI($"Failed to record your attendance, {empName}.", Color.Red);
+            }
+        }
+        private void PlaySound(string filePath)
+        {
+            // Check file extension to decide playback method
+            string extension = System.IO.Path.GetExtension(filePath).ToLower();
+
+            if (extension == ".wav")
+            {
+                // Use SoundPlayer for .wav files
+                SoundPlayer player = new SoundPlayer(filePath);
+                player.Play();
+            }
+            else if (extension == ".mp3")
+            {
+                // Use Windows Media Player for .mp3 files
+                WindowsMediaPlayer player = new WindowsMediaPlayer();
+                player.URL = filePath;
+                player.controls.play();
+            }
+            else
+            {
+                // Handle unsupported file formats
+                UpdateUI("Unsupported sound file format.", Color.Red);
+            }
+        }
+
+        private (string, string) DetermineEntryRank(List<string> entryRanks, DateTime now)
+        {
+            TimeSpan currentTime = now.TimeOfDay;
+
+            //if (!entryRanks.Contains("First") && currentTime >= TimeSpan.FromHours(6) && currentTime <= TimeSpan.FromHours(10.99))
+            //    return ("First", "IN");
+            //if (entryRanks.Contains("First") && !entryRanks.Contains("Second") && currentTime >= TimeSpan.FromHours(11) && currentTime <= TimeSpan.FromHours(12.99))
+            //    return ("Second", "OUT");
+            //if (entryRanks.Contains("Second") && !entryRanks.Contains("Third") && currentTime >= TimeSpan.FromHours(12.10) && currentTime <= TimeSpan.FromHours(13))
+            //    return ("Third", "IN");
+            //if (entryRanks.Contains("Third") && !entryRanks.Contains("Fourth") && currentTime >= TimeSpan.FromHours(16) && currentTime <= TimeSpan.FromHours(18))
+            //    return ("Fourth", "OUT");
+
+            if (!entryRanks.Contains("First") && currentTime >= TimeSpan.FromHours(6) && currentTime <= TimeSpan.FromHours(10.99))
+                return ("First", "IN");
+            if (entryRanks.Contains("First") && !entryRanks.Contains("Second") && currentTime >= TimeSpan.FromHours(11) && currentTime <= TimeSpan.FromHours(12.99))
+                return ("Second", "OUT");
+            if (!entryRanks.Contains("First") && !entryRanks.Contains("Third") && currentTime >= TimeSpan.FromHours(12.10) && currentTime <= TimeSpan.FromHours(13))
+                return ("Third", "IN");
+            if (!entryRanks.Contains("Third") && currentTime >= TimeSpan.FromHours(12.10) && currentTime <= TimeSpan.FromHours(13))
+                return ("Third", "IN");
+            if (!entryRanks.Contains("Fourth") && currentTime >= TimeSpan.FromHours(1) && currentTime <= TimeSpan.FromHours(18))
+                return ("Fourth", "OUT");
+
+
+
+            // If no conditions match, return null values
+            return (null, null);
+        }
+
 
 
         private void DetermineInOutStatus(int empID, string empName, MySqlConnection conn)

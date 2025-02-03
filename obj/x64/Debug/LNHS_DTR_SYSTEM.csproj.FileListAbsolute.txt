@@ -54,3 +54,9 @@ C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.application
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.AdminAccount.resources
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.AdminLoginForm.resources
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\Interop.MediaPlayer.dll
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\Interop.WMPDXMLib.dll
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\Interop.WMPLauncher.dll
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\Interop.WMPLib.dll
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.csproj.ResolveComReference.cache
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.PopupCard.resources

@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\adminemployeelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:adminemployeelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\adminemployeelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:adminemployeelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\popupcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:popupcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\popupcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:popupcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:biometrics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\admingeneratedtr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:admingeneratedtr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|c:\\users\\mherwin retanal\\visual basic applciation\\lnhs_dtr_system\\admingeneratedtr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1030B4AD-618A-43B4-9A4E-FBF60D4E7D6B}|LNHS_DTR_SYSTEM.csproj|solutionrelative:admingeneratedtr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +54,69 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminEmployeeList.cs",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminEmployeeList.cs",
+              "RelativeDocumentMoniker": "AdminEmployeeList.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminEmployeeList.cs",
+              "RelativeToolTip": "AdminEmployeeList.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T08:58:34.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AdminEmployeeList.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminEmployeeList.cs",
+              "RelativeDocumentMoniker": "AdminEmployeeList.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminEmployeeList.cs [Design]",
+              "RelativeToolTip": "AdminEmployeeList.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T08:58:30.317Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PopupCard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\PopupCard.cs",
+              "RelativeDocumentMoniker": "PopupCard.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\PopupCard.cs [Design]",
+              "RelativeToolTip": "PopupCard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T19:03:28.429Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminGenerateDTR.cs",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminGenerateDTR.cs",
+              "RelativeDocumentMoniker": "AdminGenerateDTR.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminGenerateDTR.cs",
+              "RelativeToolTip": "AdminGenerateDTR.cs",
+              "ViewState": "AgIAABoBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T06:33:59.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdminGenerateDTR.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminGenerateDTR.cs",
+              "RelativeDocumentMoniker": "AdminGenerateDTR.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\AdminGenerateDTR.cs [Design]",
+              "RelativeToolTip": "AdminGenerateDTR.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T06:33:49.443Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Admin.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Admin.cs",
               "RelativeDocumentMoniker": "Admin.cs",
@@ -42,20 +128,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Biometrics.cs",
               "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.cs",
               "RelativeDocumentMoniker": "Biometrics.cs",
               "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.cs",
               "RelativeToolTip": "Biometrics.cs",
-              "ViewState": "AgIAAJMBAAAAAAAAAAAcwLABAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAKoBAAAAAAAAAAAswMMBAAB+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-07T10:48:33.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "PopupCard.cs",
+              "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\PopupCard.cs",
+              "RelativeDocumentMoniker": "PopupCard.cs",
+              "ToolTip": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\PopupCard.cs",
+              "RelativeToolTip": "PopupCard.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAgwCUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T19:03:33.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Biometrics.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mherwin Retanal\\VISUAL BASIC APPLCIATION\\LNHS_DTR_SYSTEM\\Biometrics.cs",
               "RelativeDocumentMoniker": "Biometrics.cs",
