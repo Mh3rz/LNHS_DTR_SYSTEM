@@ -114,14 +114,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LNHS_DTR_SYSTEM.exe" size="2035744">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LNHS_DTR_SYSTEM.exe" size="2034208">
       <assemblyIdentity name="LNHS_DTR_SYSTEM" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AVsLgvl+xXeqTFTyFeCP+Xjq47pF/c76dwnReqUaPHU=</dsig:DigestValue>
+        <dsig:DigestValue>vLK4YKwnN6bA7+c79tDOH8sD7qSbwo0f2OD/lx/SaH0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

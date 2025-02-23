@@ -134,8 +134,8 @@ namespace LNHS_DTR_SYSTEM
                 var worksheet = workbook.Worksheets.Add("Generate_DTR");
 
                 // Column Width
-                worksheet.Column(1).Width = 2.33;
-                worksheet.Column(2).Width = 3.56;
+                worksheet.Column(1).Width = 3;
+                worksheet.Column(2).Width = 3.58;
                 worksheet.Column(3).Width = 6;
                 worksheet.Column(4).Width = 6;
                 worksheet.Column(5).Width = 6;
@@ -215,33 +215,48 @@ namespace LNHS_DTR_SYSTEM
                     // Filter rows for the current date
                     var rowsForDate = attendanceData.AsEnumerable()
                         .Where(r => DateTime.TryParse(r["date"].ToString(), out DateTime dateValue) && dateValue.Date == date.Date)
-                        .OrderBy(r => int.TryParse(r["entry_rank"].ToString(), out int entryRank) ? entryRank : 0)
+                        .OrderBy(r => TimeSpan.TryParse(r["time"].ToString(), out TimeSpan timeValue) ? timeValue : TimeSpan.Zero)
                         .ToList();
 
-                    // Populate the columns based on entry_rank
+                    // Track existing entry ranks for this date
+                    HashSet<int> existingRanks = new HashSet<int>();
+
+                    // Populate the columns based on time
                     for (int i = 0; i < rowsForDate.Count; i++)
                     {
-                        // Safely convert the "entry_rank" text value to its respective integer value
-                        string entryRankText = rowsForDate[i]["entry_rank"].ToString().ToLower(); // Ensure case-insensitive comparison
                         int entryRank = 0; // Default value in case of unexpected text
 
-                        // Use a series of if-else statements instead of switch expression
-                        if (entryRankText == "first")
+                        // Get the time from the attendance record and convert it to TimeSpan
+                        if (!TimeSpan.TryParse(rowsForDate[i]["time"].ToString(), out TimeSpan timeOfTheRecordFromrowsForDate))
                         {
-                            entryRank = 1;
+                            continue; // Skip processing if time cannot be parsed
                         }
-                        else if (entryRankText == "second")
+
+                        // Determine entry rank based on time range and existing records
+                        if (timeOfTheRecordFromrowsForDate >= TimeSpan.FromHours(5) && timeOfTheRecordFromrowsForDate < TimeSpan.FromHours(11))
                         {
-                            entryRank = 2;
+                            entryRank = 1; // AM Arrival
                         }
-                        else if (entryRankText == "third")
+                        else if (timeOfTheRecordFromrowsForDate >= TimeSpan.FromHours(11) && timeOfTheRecordFromrowsForDate < TimeSpan.FromHours(13.50))
                         {
-                            entryRank = 3;
+                            // If AM Arrival exists, this should be AM Departure
+                            if (existingRanks.Contains(1) && !existingRanks.Contains(2))
+                            {
+                                entryRank = 2; // AM Departure
+                            }
+                            // If AM Departure already exists, this should be PM Arrival
+                            else if (existingRanks.Contains(2) && !existingRanks.Contains(3))
+                            {
+                                entryRank = 3; // PM Arrival
+                            }
                         }
-                        else if (entryRankText == "fourth")
+                        else if (timeOfTheRecordFromrowsForDate >= TimeSpan.FromHours(13.50) && timeOfTheRecordFromrowsForDate < TimeSpan.FromHours(18))
                         {
-                            entryRank = 4;
+                            entryRank = 4; // PM Departure
                         }
+
+                        // Store the assigned entry rank to avoid duplicate assignments
+                        existingRanks.Add(entryRank);
 
                         // Get the time from the attendance record (assumed to be in the "time" column)
                         string timeString = rowsForDate[i]["time"].ToString();
@@ -257,16 +272,28 @@ namespace LNHS_DTR_SYSTEM
                             switch (entryRank)
                             {
                                 case 1:
-                                    worksheet.Cell(row, 3).Value = formattedTime; // AM Arrival
+                                    if (string.IsNullOrEmpty(worksheet.Cell(row, 3).GetString()))
+                                    {
+                                        worksheet.Cell(row, 3).Value = formattedTime; // AM Arrival
+                                    }
                                     break;
                                 case 2:
-                                    worksheet.Cell(row, 4).Value = formattedTime; // AM Departure
+                                    if (string.IsNullOrEmpty(worksheet.Cell(row, 4).GetString()))
+                                    {
+                                        worksheet.Cell(row, 4).Value = formattedTime; // AM Departure
+                                    }
                                     break;
                                 case 3:
-                                    worksheet.Cell(row, 5).Value = formattedTime; // PM Arrival
+                                    if (string.IsNullOrEmpty(worksheet.Cell(row, 5).GetString()))
+                                    {
+                                        worksheet.Cell(row, 5).Value = formattedTime; // PM Arrival
+                                    }
                                     break;
                                 case 4:
-                                    worksheet.Cell(row, 6).Value = formattedTime; // PM Departure
+                                    if (string.IsNullOrEmpty(worksheet.Cell(row, 6).GetString()))
+                                    {
+                                        worksheet.Cell(row, 6).Value = formattedTime; // PM Departure
+                                    }
                                     break;
                                 default:
                                     // Handle unexpected or invalid "entry_rank" values
@@ -294,41 +321,63 @@ namespace LNHS_DTR_SYSTEM
                 }
 
                 // Footer Text
-                worksheet.Cell(row + 0, 1).Value = "I certify on my honor that the above is a true and correct";
-                worksheet.Cell(row + 1, 1).Value = "record of the hours of work performed, record of which was";
-                worksheet.Cell(row + 2, 1).Value = "made daily at the time of arrival and departure from office.";
+                worksheet.Cell("A41").Value = "I certify on my honor that the above is a true and correct";
+                worksheet.Cell("A42").Value = "record of the hours of work performed, record of which was";
+                worksheet.Cell("A43").Value = "made daily at the time of arrival and departure from office.";
 
-                worksheet.Range("A40:H40").Merge();
+                
                 worksheet.Range("A41:H41").Merge();
                 worksheet.Range("A42:H42").Merge();
                 worksheet.Range("A43:H43").Merge();
-
-                worksheet.Cell(row + 4, 1).Value = "Signature";
-                worksheet.Cell(row + 5, 1).Value = "Verified as to the prescribed office hours";
-                worksheet.Cell(row + 7, 1).Value = "Melomar A. Retanal";
-                worksheet.Cell(row + 8, 1).Value = "In Charge";
-
                 worksheet.Range("A44:H44").Merge();
+
+
+                worksheet.Cell("A45").Value = "Signature";
+                worksheet.Cell("A46").Value = "Verified as to the prescribed office hours";
+                worksheet.Cell("A48").Value = "Melomar A. Retanal";
+                worksheet.Cell("A49").Value = "In Charge";
+
                 worksheet.Range("A45:H45").Merge();
                 worksheet.Range("A46:H46").Merge();
                 worksheet.Range("A47:H47").Merge();
                 worksheet.Range("A48:H48").Merge();
+                worksheet.Range("A49:H49").Merge();
 
-                worksheet.Range("A44:H44").Style.Border.TopBorder = XLBorderStyleValues.Thin;
-                worksheet.Range("A48:H48").Style.Border.TopBorder = XLBorderStyleValues.Thin;
-                worksheet.Range("A44:H44").Style.Border.TopBorderColor = XLColor.Green;
-                worksheet.Range("A48:H48").Style.Border.TopBorderColor = XLColor.Green;
-
-
-                worksheet.Range("A" + (row + 0) + ":H" + (row + 4)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                worksheet.Range("A" + (row + 4) + ":H" + (row + 4)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                worksheet.Range("A" + (row + 5) + ":H" + (row + 5)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                worksheet.Range("A" + (row + 7) + ":H" + (row + 7)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                worksheet.Range("A" + (row + 8) + ":H" + (row + 8)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-
-                worksheet.Range("A" + (row + 0) + ":H" + (row + 2)).Style.Font.FontSize = 10;
+                //-------------------------------------------------------------------------------
+                worksheet.Range("A41").Style.Font.FontSize = 10;
+                worksheet.Range("A42").Style.Font.FontSize = 10;
+                worksheet.Range("A43").Style.Font.FontSize = 10;
+                worksheet.Range("A38:H38").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                worksheet.Range("A38:H38").Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                worksheet.Range("A39:H39").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                worksheet.Range("A39:H39").Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                worksheet.Range("A40:H40").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                worksheet.Range("A40:H40").Style.Border.InsideBorder = XLBorderStyleValues.Thin;
                 
 
+
+                worksheet.Range("A38:H38").Style.Border.OutsideBorderColor = XLColor.Green;
+                worksheet.Range("A38:H38").Style.Border.InsideBorderColor = XLColor.Green;
+                worksheet.Range("A39:H39").Style.Border.OutsideBorderColor = XLColor.Green;
+                worksheet.Range("A39:H39").Style.Border.InsideBorderColor = XLColor.Green;
+                worksheet.Range("A40:H40").Style.Border.OutsideBorderColor = XLColor.Green;
+                worksheet.Range("A40:H40").Style.Border.InsideBorderColor = XLColor.Green;
+
+                //-------------------------------------------------------------------------------
+
+                worksheet.Range("A45:H45").Style.Border.TopBorder = XLBorderStyleValues.Thin;
+                worksheet.Range("A49:H49").Style.Border.TopBorder = XLBorderStyleValues.Thin;
+                worksheet.Range("A45:H45").Style.Border.TopBorderColor = XLColor.Green;
+                worksheet.Range("A49:H49").Style.Border.TopBorderColor = XLColor.Green;
+
+
+                worksheet.Range("A41:H41").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                worksheet.Range("A42:H42").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                worksheet.Range("A43:H43").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                worksheet.Range("A45:H45").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                worksheet.Range("A46:H46").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                worksheet.Range("A48:H49").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                
 
                 // Save the workbook
                 // Prepare the file name based on the employee name, month, and year
@@ -535,33 +584,48 @@ namespace LNHS_DTR_SYSTEM
                         // Filter rows for the current date
                         var rowsForDate = attendanceData.AsEnumerable()
                             .Where(r => DateTime.TryParse(r["date"].ToString(), out DateTime dateValue) && dateValue.Date == date.Date)
-                            .OrderBy(r => int.TryParse(r["entry_rank"].ToString(), out int entryRank) ? entryRank : 0)
+                            .OrderBy(r => TimeSpan.TryParse(r["time"].ToString(), out TimeSpan timeValue) ? timeValue : TimeSpan.Zero)
                             .ToList();
 
-                        // Populate the columns based on entry_rank
+                        // Track existing entry ranks for this date
+                        HashSet<int> existingRanks = new HashSet<int>();
+
+                        // Populate the columns based on time
                         for (int i = 0; i < rowsForDate.Count; i++)
                         {
-                            // Safely convert the "entry_rank" text value to its respective integer value
-                            string entryRankText = rowsForDate[i]["entry_rank"].ToString().ToLower(); // Ensure case-insensitive comparison
                             int entryRank = 0; // Default value in case of unexpected text
 
-                            // Use a series of if-else statements instead of switch expression
-                            if (entryRankText == "first")
+                            // Get the time from the attendance record and convert it to TimeSpan
+                            if (!TimeSpan.TryParse(rowsForDate[i]["time"].ToString(), out TimeSpan timeOfTheRecordFromrowsForDate))
                             {
-                                entryRank = 1;
+                                continue; // Skip processing if time cannot be parsed
                             }
-                            else if (entryRankText == "second")
+
+                            // Determine entry rank based on time range and existing records
+                            if (timeOfTheRecordFromrowsForDate >= TimeSpan.FromHours(5) && timeOfTheRecordFromrowsForDate < TimeSpan.FromHours(11))
                             {
-                                entryRank = 2;
+                                entryRank = 1; // AM Arrival
                             }
-                            else if (entryRankText == "third")
+                            else if (timeOfTheRecordFromrowsForDate >= TimeSpan.FromHours(11) && timeOfTheRecordFromrowsForDate < TimeSpan.FromHours(13.50))
                             {
-                                entryRank = 3;
+                                // If AM Arrival exists, this should be AM Departure
+                                if (existingRanks.Contains(1) && !existingRanks.Contains(2))
+                                {
+                                    entryRank = 2; // AM Departure
+                                }
+                                // If AM Departure already exists, this should be PM Arrival
+                                else if (existingRanks.Contains(2) && !existingRanks.Contains(3))
+                                {
+                                    entryRank = 3; // PM Arrival
+                                }
                             }
-                            else if (entryRankText == "fourth")
+                            else if (timeOfTheRecordFromrowsForDate >= TimeSpan.FromHours(13.50) && timeOfTheRecordFromrowsForDate < TimeSpan.FromHours(18))
                             {
-                                entryRank = 4;
+                                entryRank = 4; // PM Departure
                             }
+
+                            // Store the assigned entry rank to avoid duplicate assignments
+                            existingRanks.Add(entryRank);
 
                             // Get the time from the attendance record (assumed to be in the "time" column)
                             string timeString = rowsForDate[i]["time"].ToString();
@@ -577,16 +641,28 @@ namespace LNHS_DTR_SYSTEM
                                 switch (entryRank)
                                 {
                                     case 1:
-                                        worksheet.Cell(row, 3).Value = formattedTime; // AM Arrival
+                                        if (string.IsNullOrEmpty(worksheet.Cell(row, 3).GetString()))
+                                        {
+                                            worksheet.Cell(row, 3).Value = formattedTime; // AM Arrival
+                                        }
                                         break;
                                     case 2:
-                                        worksheet.Cell(row, 4).Value = formattedTime; // AM Departure
+                                        if (string.IsNullOrEmpty(worksheet.Cell(row, 4).GetString()))
+                                        {
+                                            worksheet.Cell(row, 4).Value = formattedTime; // AM Departure
+                                        }
                                         break;
                                     case 3:
-                                        worksheet.Cell(row, 5).Value = formattedTime; // PM Arrival
+                                        if (string.IsNullOrEmpty(worksheet.Cell(row, 5).GetString()))
+                                        {
+                                            worksheet.Cell(row, 5).Value = formattedTime; // PM Arrival
+                                        }
                                         break;
                                     case 4:
-                                        worksheet.Cell(row, 6).Value = formattedTime; // PM Departure
+                                        if (string.IsNullOrEmpty(worksheet.Cell(row, 6).GetString()))
+                                        {
+                                            worksheet.Cell(row, 6).Value = formattedTime; // PM Departure
+                                        }
                                         break;
                                     default:
                                         // Handle unexpected or invalid "entry_rank" values
@@ -613,39 +689,62 @@ namespace LNHS_DTR_SYSTEM
                         row++;
                     }
                     // Footer Text
-                    worksheet.Cell(row + 0, 1).Value = "I certify on my honor that the above is a true and correct";
-                    worksheet.Cell(row + 1, 1).Value = "record of the hours of work performed, record of which was";
-                    worksheet.Cell(row + 2, 1).Value = "made daily at the time of arrival and departure from office.";
+                    worksheet.Cell("A41").Value = "I certify on my honor that the above is a true and correct";
+                    worksheet.Cell("A42").Value = "record of the hours of work performed, record of which was";
+                    worksheet.Cell("A43").Value = "made daily at the time of arrival and departure from office.";
 
-                    worksheet.Range("A40:H40").Merge();
+
                     worksheet.Range("A41:H41").Merge();
                     worksheet.Range("A42:H42").Merge();
                     worksheet.Range("A43:H43").Merge();
-
-                    worksheet.Cell(row + 4, 1).Value = "Signature";
-                    worksheet.Cell(row + 5, 1).Value = "Verified as to the prescribed office hours";
-                    worksheet.Cell(row + 7, 1).Value = "Melomar A. Retanal";
-                    worksheet.Cell(row + 8, 1).Value = "In Charge";
-
                     worksheet.Range("A44:H44").Merge();
+
+
+                    worksheet.Cell("A45").Value = "Signature";
+                    worksheet.Cell("A46").Value = "Verified as to the prescribed office hours";
+                    worksheet.Cell("A48").Value = "Melomar A. Retanal";
+                    worksheet.Cell("A49").Value = "In Charge";
+
                     worksheet.Range("A45:H45").Merge();
                     worksheet.Range("A46:H46").Merge();
                     worksheet.Range("A47:H47").Merge();
                     worksheet.Range("A48:H48").Merge();
+                    worksheet.Range("A49:H49").Merge();
 
-                    worksheet.Range("A44:H44").Style.Border.TopBorder = XLBorderStyleValues.Thin;
-                    worksheet.Range("A48:H48").Style.Border.TopBorder = XLBorderStyleValues.Thin;
-                    worksheet.Range("A44:H44").Style.Border.TopBorderColor = XLColor.Green;
-                    worksheet.Range("A48:H48").Style.Border.TopBorderColor = XLColor.Green;
+                    //-------------------------------------------------------------------------------
+                    worksheet.Range("A41").Style.Font.FontSize = 10;
+                    worksheet.Range("A42").Style.Font.FontSize = 10;
+                    worksheet.Range("A43").Style.Font.FontSize = 10;
+                    worksheet.Range("A38:H38").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                    worksheet.Range("A38:H38").Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                    worksheet.Range("A39:H39").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                    worksheet.Range("A39:H39").Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                    worksheet.Range("A40:H40").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                    worksheet.Range("A40:H40").Style.Border.InsideBorder = XLBorderStyleValues.Thin;
 
-                    worksheet.Range("A" + (row + 0) + ":H" + (row + 4)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                    worksheet.Range("A" + (row + 4) + ":H" + (row + 4)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                    worksheet.Range("A" + (row + 5) + ":H" + (row + 5)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                    worksheet.Range("A" + (row + 7) + ":H" + (row + 7)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                    worksheet.Range("A" + (row + 8) + ":H" + (row + 8)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
-                    worksheet.Range("A" + (row + 0) + ":H" + (row + 2)).Style.Font.FontSize = 10;
-                    worksheet.Rows().AdjustToContents();
+
+                    worksheet.Range("A38:H38").Style.Border.OutsideBorderColor = XLColor.Green;
+                    worksheet.Range("A38:H38").Style.Border.InsideBorderColor = XLColor.Green;
+                    worksheet.Range("A39:H39").Style.Border.OutsideBorderColor = XLColor.Green;
+                    worksheet.Range("A39:H39").Style.Border.InsideBorderColor = XLColor.Green;
+                    worksheet.Range("A40:H40").Style.Border.OutsideBorderColor = XLColor.Green;
+                    worksheet.Range("A40:H40").Style.Border.InsideBorderColor = XLColor.Green;
+
+                    //-------------------------------------------------------------------------------
+
+                    worksheet.Range("A45:H45").Style.Border.TopBorder = XLBorderStyleValues.Thin;
+                    worksheet.Range("A49:H49").Style.Border.TopBorder = XLBorderStyleValues.Thin;
+                    worksheet.Range("A45:H45").Style.Border.TopBorderColor = XLColor.Green;
+                    worksheet.Range("A49:H49").Style.Border.TopBorderColor = XLColor.Green;
+
+
+                    worksheet.Range("A41:H41").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    worksheet.Range("A42:H42").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    worksheet.Range("A43:H43").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    worksheet.Range("A45:H45").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    worksheet.Range("A46:H46").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    worksheet.Range("A48:H49").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 }
 
                 // Save the workbook to the specified path

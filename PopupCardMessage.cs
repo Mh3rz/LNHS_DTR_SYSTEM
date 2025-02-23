@@ -10,20 +10,19 @@ using System.Windows.Forms;
 
 namespace LNHS_DTR_SYSTEM
 {
-    public partial class PopupCard : Form
+    public partial class PopupCardMessage : Form
     {
-        //REmove string status and Remove condition all green backgorund
-        public PopupCard(string empName)
+        public PopupCardMessage(string bodymessage)
         {
             InitializeComponent();
 
             // Set the text and background color based on the status
-            lblName.Text = empName;
-                this.BackColor = Color.Green;
-                lblName.ForeColor = Color.White;
-            
-            // Automatically close the popup after 4 seconds
-            Timer timer = new Timer { Interval = 4000 }; // 4 seconds
+            lblBody.Text = bodymessage;
+            this.BackColor = Color.Red;
+            lblBody.ForeColor = Color.White;
+
+            // Automatically close the popup after 6 seconds
+            Timer timer = new Timer { Interval = 6000 }; // 6 seconds
             timer.Tick += (s, e) =>
             {
                 timer.Stop();
@@ -31,7 +30,5 @@ namespace LNHS_DTR_SYSTEM
             };
             timer.Start();
         }
-
     }
-
 }

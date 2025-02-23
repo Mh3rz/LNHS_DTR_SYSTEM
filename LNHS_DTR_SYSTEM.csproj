@@ -321,6 +321,12 @@
     <Compile Include="PopupCard.Designer.cs">
       <DependentUpon>PopupCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopupCardMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupCardMessage.Designer.cs">
+      <DependentUpon>PopupCardMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PopupCard.resx">
       <DependentUpon>PopupCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupCardMessage.resx">
+      <DependentUpon>PopupCardMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

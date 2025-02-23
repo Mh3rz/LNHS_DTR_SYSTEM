@@ -60,3 +60,4 @@ C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\Interop.WMPLib.dll
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.csproj.ResolveComReference.cache
 C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.PopupCard.resources
+C:\Users\Mherwin Retanal\VISUAL BASIC APPLCIATION\LNHS_DTR_SYSTEM\obj\x64\Debug\LNHS_DTR_SYSTEM.PopupCardMessage.resources
